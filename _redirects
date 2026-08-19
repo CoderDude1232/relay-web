@@ -1,2 +1,2 @@
-/add /add/index.html 200
-/add/* /add/index.html 200
+/add/* /add/ 200
+/add /add/ 200
