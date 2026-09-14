@@ -8,9 +8,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#12090F" media="(prefers-color-scheme: dark)">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+<link rel="preload" href="fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script>
 /* Applied before first paint so a stored choice never flashes the other theme. */
@@ -123,9 +121,10 @@
     <h2>Your messages</h2>
     <div>
       <p>
-        Messages are encrypted on your device, to keys held only on the devices in the
-        conversation. Your keys are generated on your phone and never leave it — which is also why
-        we can't recover anything for you.
+        Messages are encrypted on your device with the <strong>Signal Protocol</strong> — a
+        post-quantum key exchange, then the Double Ratchet — to keys held only on the devices in
+        the conversation. Your keys are generated on your phone and never leave it, which is also
+        why we can't recover anything for you.
       </p>
       <p>
         While a message is in transit our servers hold an encrypted payload and the public key
@@ -191,6 +190,10 @@
         Connections between the app and our servers are encrypted in transit, and the message
         payloads they carry are separately encrypted end to end. Access to our infrastructure is
         limited to the people who need it to run the service.
+      </p>
+      <p>
+        On your device, the message database is encrypted with <strong>SQLCipher</strong>, so the
+        history sitting on your phone isn't readable by anything that manages to get at the file.
       </p>
       <p>
         The strongest protection here isn't a policy commitment — it's that we don't hold the

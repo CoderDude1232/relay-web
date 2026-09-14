@@ -16,6 +16,8 @@ styles.css     shared stylesheet (all design tokens at the top)
 site.js        waitlist form handling
 images/        hero-light.jpg, hero-dark.jpg, and both logo inks
 favicon.svg
+og.png         1200x630 link preview image
+fonts/         Schibsted Grotesk, self-hosted (one variable woff2 per subset)
 _headers       Cloudflare/Netlify headers — sets the AASA content type
 _redirects     rewrites /add/* to /add/ so any handle serves the invite page
 .well-known/apple-app-site-association
@@ -141,11 +143,6 @@ The riskiest one is **"who you were talking to"** on the purple section. With em
 a table linking sender to recipient is the easy thing to end up with by accident. Verify it
 before launch or cut that line.
 
-**6. Add an `og.png`** (1200x630). The domain is already `relaymsg.app` throughout.
-
-**7. Self-host the font.** Schibsted Grotesk loads from Google Fonts, so visitors' browsers hit
-Google. Download the woff2 files, drop them in `fonts/`, replace the `<link>` with local
-`@font-face` rules.
 
 ## Deploying
 
@@ -262,6 +259,30 @@ paper and 5.7:1 on grey, white on button and band 4.7:1, hover 9.1:1. Nothing be
 If the band ever reads too loud at full width, `#9C0CAB` is the same hue a few steps down and
 gives white text 6.9:1 — but it reads noticeably more purple than the logo.
 
+## Fonts
+
+Schibsted Grotesk is **self-hosted** — nothing is fetched from Google. It's a variable font, so
+one file per subset covers every weight the site uses (400–700), declared with
+`font-weight: 400 700`. Latin is preloaded; latin-ext loads only if a character needs it.
+
+Don't reintroduce the Google Fonts `<link>`. The invite pages carry a token in the URL and, for
+`/g/`, a secret in the fragment — a third-party request from those pages is the one thing worth
+avoiding, and it was the last one left.
+
+## The link preview image
+
+`og.png`, 1200×630, on the brand black with the magenta bolt. Referenced from the landing page
+and from all three invite pages, since those are what people actually paste into iMessage,
+Discord and Slack.
+
+The invite pages deliberately have **no `og:url`**. A preview crawler fetching the page is
+fine — fragments never leave the browser, so the group key is never in what it fetches — but
+there's no reason to put the token into metadata as well.
+
+It was built by rendering `og.html` with `qlmanage` and cropping the result. If you rebuild it,
+note that qlmanage outputs a square and renders the content slightly low: the working command
+was `sips -c 630 1200 --cropOffset 424 0`.
+
 ## Voice
 
 Write like an established product, not a startup asking permission. No volunteering that
@@ -286,7 +307,31 @@ fabricated proof isn't.
 The "Where things stand" table on the download page stays accurate as status changes. It's
 the one place the site commits to a fact that goes stale.
 
-## Navigation## Voice
+## Navigation## Fonts
+
+Schibsted Grotesk is **self-hosted** — nothing is fetched from Google. It's a variable font, so
+one file per subset covers every weight the site uses (400–700), declared with
+`font-weight: 400 700`. Latin is preloaded; latin-ext loads only if a character needs it.
+
+Don't reintroduce the Google Fonts `<link>`. The invite pages carry a token in the URL and, for
+`/g/`, a secret in the fragment — a third-party request from those pages is the one thing worth
+avoiding, and it was the last one left.
+
+## The link preview image
+
+`og.png`, 1200×630, on the brand black with the magenta bolt. Referenced from the landing page
+and from all three invite pages, since those are what people actually paste into iMessage,
+Discord and Slack.
+
+The invite pages deliberately have **no `og:url`**. A preview crawler fetching the page is
+fine — fragments never leave the browser, so the group key is never in what it fetches — but
+there's no reason to put the token into metadata as well.
+
+It was built by rendering `og.html` with `qlmanage` and cropping the result. If you rebuild it,
+note that qlmanage outputs a square and renders the content slightly low: the working command
+was `sips -c 630 1200 --cropOffset 424 0`.
+
+## Voice
 
 Write like an established product, not a startup asking permission. No volunteering that
 Relay is new, unreviewed, or unproven — none of that helps a reader decide, and it costs
