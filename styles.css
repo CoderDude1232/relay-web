@@ -449,6 +449,17 @@ a:hover { color: var(--ink); }
 }
 .btn-quiet:hover { color: var(--ink); }
 
+.invite-warn {
+  margin: 1.75rem auto 0;
+  max-width: 34ch;
+  font-size: var(--t-sm);
+  color: var(--ink-70);
+  background: var(--grey);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+}
+
 .invite-note { margin-top: 2rem; font-size: var(--t-sm); color: var(--ink-45); }
 .invite-note a { color: var(--ink-45); }
 

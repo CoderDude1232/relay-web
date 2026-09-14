@@ -5,7 +5,9 @@ no framework. Open `index.html` in a browser and it works.
 
 ```
 index.html     landing page + waitlist
-add/index.html /add/<handle> — invite deep-link landing page
+add/index.html /add/<handle>       — contact invite by username
+c/index.html   /c/<token>          — contact invite by token
+g/index.html   /g/<token>#<key>    — group invite; the fragment is a secret
 download.html  release status, TestFlight slot, beta expectations
 privacy.html   privacy policy
 terms.html     terms of service
@@ -31,7 +33,44 @@ _redirects     rewrites /add/* to /add/ so any handle serves the invite page
 - `_redirects` rewrites `/add/anything` to `/add/index.html` with a 200, not a 302 — the path
   has to survive so the page can read the handle out of it.
 
-The invite page uses **root-absolute asset paths** (`/styles.css`, `/images/…`) for that
+## Deep links
+
+Three routes, each a universal link into the app with a web page behind it for people who
+don't have the app yet. All three are declared in `apple-app-site-association` and given a
+catch-all 200 rewrite in `_redirects` — the path has to survive so the page can read the token
+out of it.
+
+| Route | Deep link |
+| --- | --- |
+| `/add/<handle>` | `relay://add/<handle>` |
+| `/c/<token>` | `relay://contact/<token>` |
+| `/g/<token>#<key>` | `relay://join/<token>#<key>` |
+
+Tokens are validated against `^[A-Za-z0-9_-]{1,128}$` and never displayed — they only go into
+the deep link.
+
+### The group key is a secret
+
+`/g/`'s fragment is the group's decryption key. Browsers never put a fragment on the wire, and
+nothing in the page changes that: it's read from `location.hash`, checked against the URL-safe
+base64 alphabet (`A-Za-z0-9-_`, no padding), and written verbatim into the button's `href`.
+It is never rendered, never stored, and never given to anything that makes a request.
+
+**Don't add analytics, error reporting, or any third-party script to these pages.** Most of
+them capture `location.href`, which would ship the key straight out. Verified with a
+distinctive key in the fragment: it appeared in no request URL, no visible text, and nowhere
+in the document except the `relay://` href.
+
+The group's name isn't shown, because it's encrypted with that key and is only readable in the
+app. A link arriving without a usable key shows a short notice instead of a dead button.
+
+`_headers` sets `Referrer-Policy: no-referrer` and `X-Robots-Tag: noindex` on all three invite
+paths, so the token in the path isn't handed to third parties or indexed.
+
+The one remaining cross-origin request on these pages is **Google Fonts**. Self-hosting the
+font matters more here than elsewhere — see the deploy list above.
+
+The invite pages use **root-absolute asset paths** (`/styles.css`, `/images/…`) for that
 reason: relative paths would resolve against `/add/ethan` and break for some URL shapes.
 
 The handle is read from the path and validated against `^[A-Za-z0-9_.-]{1,30}$` before being
