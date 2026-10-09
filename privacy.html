@@ -195,6 +195,13 @@
         directly to the other person's. That server sees the IP addresses taking part in a call,
         never what's said, and it isn't routed through Cloudflare.
       </p>
+      <p>
+        If our call server is down or close to overloaded — for example during an attack — new
+        calls are relayed through Cloudflare's call relay instead, until ours recovers. While that
+        happens Cloudflare sees the same thing our server would: the IP addresses taking part in a
+        call and how much data passes between them. Calls stay end-to-end encrypted, so Cloudflare
+        can't hear or see them, and we don't tell Cloudflare who you are.
+      </p>
     </div>
   </section>
 
