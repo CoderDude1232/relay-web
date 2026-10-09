@@ -12,6 +12,10 @@ download.html  release status, TestFlight slot, beta expectations
 privacy.html   privacy policy
 terms.html     terms of service
 support.html   FAQ, contact, security disclosure
+security.html  how Relay works: what the server sees, and where the encryption ends
+source.html    open-source components, licences, and the AGPL source offer
+compare.html   Relay vs WhatsApp, Signal, Telegram (dated; recheck periodically)
+changelog.html user-facing what's new, by month
 styles.css     shared stylesheet (all design tokens at the top)
 site.js        waitlist form handling
 images/        hero-light.jpg, hero-dark.jpg, and both logo inks
