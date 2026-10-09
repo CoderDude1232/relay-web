@@ -191,8 +191,26 @@
         governed by <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.
       </p>
       <p>
-        Calls that are relayed for privacy pass through our own relay server rather than
-        Cloudflare. It sees the IP addresses taking part in a call, never what's said.
+        For privacy, calls are relayed through our own server instead of connecting your phone
+        directly to the other person's. That server sees the IP addresses taking part in a call,
+        never what's said, and it isn't routed through Cloudflare.
+      </p>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Signing in</h2>
+    <div>
+      <p>
+        Signing in — with an email and password, Apple, or Google — is handled by
+        <b>Supabase</b>, our authentication provider. It stores your email address, a securely
+        hashed password if you created one, which sign-in method you use, and basic sign-in
+        records such as the time and IP address of each sign-in. Relay's own servers keep only a
+        one-way token derived from your email, not the address itself.
+      </p>
+      <p>
+        Supabase may host this data outside Australia, and its handling is governed by
+        <a href="https://supabase.com/privacy">Supabase's privacy policy</a>.
       </p>
     </div>
   </section>
