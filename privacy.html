@@ -106,6 +106,11 @@
         than hand us something you care about. Nothing in Relay checks who you really are.
       </p>
       <p>
+        People can't find you by your email address unless you turn on <b>Find Me by Email</b>
+        in the app — it's off by default. Even then, lookups are blinded, so our servers never see
+        the addresses being searched.
+      </p>
+      <p>
         We also hold a push token for each of your devices, issued by Apple, so we can wake the
         device when something arrives for it. It's tied to your account and goes when the account
         does.
@@ -123,8 +128,9 @@
       <p>
         Messages are encrypted on your device with the <strong>Signal Protocol</strong> — a
         post-quantum key exchange, then the Double Ratchet — to keys held only on the devices in
-        the conversation. Your keys are generated on your phone and never leave it, which is also
-        why we can't recover anything for you.
+        the conversation. Your keys are generated on your phone and never reach us — they leave it only
+        end-to-end encrypted, to your own devices when you link one — which is also why we
+        can't recover anything for you.
       </p>
       <p>
         While a message is in transit our servers hold an encrypted payload and the public key
@@ -134,7 +140,7 @@
       <p>
         Attachments work slightly differently: a file has to stay available long enough for the
         other device to fetch it, so attachment data is held — encrypted, and unreadable to us —
-        for up to 30 days, then purged whether it was collected or not.
+        for up to 14 days, then purged whether it was collected or not.
       </p>
     </div>
   </section>
@@ -143,10 +149,10 @@
     <h2>What we never receive</h2>
     <div>
       <ul class="doc-list">
-        <li><b>Your address book.</b> Relay never reads or uploads your contacts.</li>
+        <li><b>Your address book.</b> Relay only looks at your contacts if you tap Find Contacts, and then only their email addresses, which are blinded on your device before the check — we never see them, and nothing from your address book is stored.</li>
         <li><b>Your message content.</b> Encryption happens on your device, to keys we don't hold.</li>
-        <li><b>Who you talk to.</b> Messages aren't stored against a sender or a recipient.</li>
-        <li><b>Your location.</b> The app requests no location permission of any kind.</li>
+        <li><b>Who you talk to.</b> Messages are sealed so our servers can't see who sent them; a waiting message is held only against the recipient's device until it's delivered, and we keep no record of who messages whom.</li>
+        <li><b>Your location.</b> The app asks for location only if you share your live location in a chat or turn on showing your device's region to your own devices. Both travel end-to-end encrypted; our servers never receive your location.</li>
         <li><b>Usage analytics.</b> No analytics SDK, no crash reporter, no attribution framework is bundled in the app.</li>
       </ul>
     </div>
