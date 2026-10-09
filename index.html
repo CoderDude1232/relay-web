@@ -16,6 +16,28 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Relay — say anything. Encrypted calls, group chats, photos and voice notes.">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://relaymsg.app/#org",
+      "name": "Relay",
+      "url": "https://relaymsg.app/",
+      "logo": "https://relaymsg.app/images/relay-logo-dark-ink.png",
+      "email": "support@relaymsg.app"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://relaymsg.app/#website",
+      "name": "Relay",
+      "url": "https://relaymsg.app/",
+      "publisher": { "@id": "https://relaymsg.app/#org" }
+    }
+  ]
+}
+</script>
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#12090F" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -44,7 +66,7 @@
       <a href="#features">Features</a>
       <a href="#storage">What we store</a>
       <a href="#limits">Limits</a>
-      <a href="download.html">Download</a>
+      <a href="/download">Download</a>
     </nav>
     <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch theme">
       <svg class="i-light" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -78,7 +100,7 @@
           <button class="btn" type="submit">Join the waitlist</button>
         </div>
         <p class="form-status" id="waitlist-status" role="status" aria-live="polite"></p>
-        <p class="signup-note">One email when Relay ships. <a href="privacy.html">How we handle it</a>.</p>
+        <p class="signup-note">One email when Relay ships. <a href="/privacy">How we handle it</a>.</p>
       </form>
     </div>
 
@@ -209,9 +231,9 @@
       <img class="logo-on-dark" src="images/relay-logo-light-ink.png" alt="Relay" width="280" height="128">
     </p>
     <nav class="foot-links" aria-label="Footer">
-      <a href="privacy.html">Privacy policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="support.html">Support</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms</a>
+      <a href="/support">Support</a>
       <a href="mailto:hello@relaymsg.app">hello@relaymsg.app</a>
     </nav>
   </div>
