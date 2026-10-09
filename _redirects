@@ -4,3 +4,5 @@
 /c /c/ 200
 /g/* /g/ 200
 /g /g/ 200
+/call/* /call/ 200
+/call /call/ 200
