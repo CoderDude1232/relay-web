@@ -174,11 +174,36 @@
   </section>
 
   <section class="doc-section">
+    <h2>Network protection</h2>
+    <div>
+      <p>
+        Connections to Relay's servers pass through <b>Cloudflare</b>, which shields them from
+        attacks that could take the service offline. To do that, Cloudflare handles our traffic
+        on our behalf and can see connection details: your IP address, when a request was made,
+        which part of the service it was for, and the account identifier the app attaches to
+        signed requests.
+      </p>
+      <p>
+        Cloudflare cannot see your messages, who you message, your contacts or your groups —
+        those are encrypted on your device before they leave it. Cloudflare processes connection
+        data under its data-processing terms, doesn't sell it, and keeps logs only briefly; like
+        any provider, it can be legally required to disclose what it holds. Its handling is
+        governed by <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.
+      </p>
+      <p>
+        Calls that are relayed for privacy pass through our own relay server rather than
+        Cloudflare. It sees the IP addresses taking part in a call, never what's said.
+      </p>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h2>Where your data is</h2>
     <div>
       <p>
         Some of what Relay depends on runs outside Australia. Apple's push infrastructure is
-        global, and the service that sends the waitlist email may be hosted overseas.
+        global, Cloudflare's network operates worldwide, and the service that sends the waitlist
+        email may be hosted overseas.
       </p>
       <p>
         Where that happens, everything in this policy still applies. Your messages stay encrypted
