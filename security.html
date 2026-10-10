@@ -305,7 +305,7 @@
       <ul class="doc-list">
         <li><b>Network metadata.</b> Connections to our servers pass through Cloudflare, which can see your IP address, when you connect, and the account identifier attached to signed requests. It can't see message content or who you message.</li>
         <li><b>Push notifications.</b> Apple can see that your phone received a push, and when.</li>
-        <li><b>The first message to someone new.</b> The very first time you contact someone, your phone downloads their public keys with a request signed by your device. We don't keep a record of these requests, but it is a moment when a compromised server could see which account asked for whose keys. After that, your phone fetches their keys anonymously, so the server can't tell who is asking.</li>
+        <li><b>Looking up someone's keys.</b> To start an encrypted chat, your phone downloads the other person's public keys. It does this anonymously: it proves it may contact them with a key it got from the private directory lookup, so our servers can't tell who is asking for whose keys. Only for accounts that haven't updated the app yet does it fall back to a request signed by your device.</li>
         <li><b>Calls.</b> The call relay sees the IP addresses taking part. Turn Relay-Only Calls off and the two phones may connect directly, which shows each person the other's IP address.</li>
         <li><b>Your device.</b> Messages are decrypted on your phone to be shown to you. Anyone who can unlock it, or malware running on it, can read them.</li>
         <li><b>The other person.</b> They can screenshot, forward or repeat anything you send. No messenger can change that.</li>
